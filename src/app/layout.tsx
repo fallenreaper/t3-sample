@@ -1,9 +1,12 @@
 import "~/styles/globals.css";
+// import "@uploadthing/react/styles.css";
+// OR you can add stuff to the Globals CSS file
 
 import { type Metadata } from "next";
 import { Geist } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { TopNav } from "./_components/topnav";
+
 
 export const metadata: Metadata = {
   title: "Just a Sample Gallery",

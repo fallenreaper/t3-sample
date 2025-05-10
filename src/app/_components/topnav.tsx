@@ -19,9 +19,18 @@ export const TopNav = () => {
           <div className="flex flex-row gap-2">
             <UploadButton
               endpoint="imageUploader"
-            //   onClientUploadComplete={() => {
-            //     router.refresh();
-            //   }}
+              onClientUploadComplete={() => {
+                router.refresh();
+              }}
+              onUploadError={(error: Error) => {
+                alert(`ERROR! ${error.message}`);
+              }}
+              onBeforeUploadBegin={(files) => {
+                // You can use the callback to add additional metadata to the files
+                // before they are uploaded
+                console.log("onBeforeUploadBegin");
+                return files;
+              }}
             />
             {/* This button will open the sign-in modal when clicked */}
             {/* Anything in here will render when you are signed in */}

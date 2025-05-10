@@ -1,4 +1,4 @@
-import { createUploadthing, type FileRouter } from "uploadthing/next";
+import { createUploadthing, type FileRouter } from "uploadthing/server";
 import { UploadThingError } from "uploadthing/server";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "~/server/db";
@@ -16,13 +16,15 @@ export const ourFileRouter = {
        * @see https://docs.uploadthing.com/file-routes#route-config
        */
       maxFileSize: "4MB",
-      maxFileCount: 1,
+      maxFileCount: 40,
     },
   })
     // Set permissions and file types for this FileRoute
     .middleware(async ({ req }) => {
+      console.log("middleware", req);
       // This code runs on your server before upload
       const user = await auth();
+      console.log("user", user);
 
       // If you throw, the user will not be able to upload
       if (!user.userId) throw new UploadThingError("Unauthorized");
@@ -39,6 +41,7 @@ export const ourFileRouter = {
       await db.insert(images).values({
         name: file.name,
         url: file.ufsUrl,
+        userId: metadata.userId
       });
 
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback

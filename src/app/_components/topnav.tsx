@@ -1,5 +1,5 @@
 "use client";
-import { SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { UploadButton } from "~/utils/uploadthing";
 
@@ -15,7 +15,7 @@ export const TopNav = () => {
           {/* Anything in here will render when you arent signed in */}
           <SignInButton mode="modal"></SignInButton>
         </SignedOut>
-        <SignInButton>
+        <SignedIn>
           <div className="flex flex-row gap-2">
             <UploadButton
               endpoint="imageUploader"
@@ -36,7 +36,7 @@ export const TopNav = () => {
             {/* Anything in here will render when you are signed in */}
             <UserButton></UserButton>
           </div>
-        </SignInButton>
+        </SignedIn>
       </div>
     </nav>
   );

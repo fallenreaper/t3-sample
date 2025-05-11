@@ -10,6 +10,7 @@ export const dynamic = "force-dynamic";
 const Images = async () => {
   const images = await db.query.images.findMany({
     orderBy: (model, { desc }) => desc(model.id),
+    // where: (img, { eq }) => eq(img.userId, user.id), ),
   });
   console.log("images", images);
   return (

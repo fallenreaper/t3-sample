@@ -12,7 +12,17 @@ const config = {
     },
     eslint: {
         ignoreDuringBuilds: true
-    }
+    },
+    images: {
+        remotePatterns: [
+            {
+                hostname: "utfs.io", // Older Domain name for UploadThing
+            },
+            {
+                hostname: "*.ufs.sh", // Current Domain name for UploadThing
+            }
+        ]
+    },
 };
 
 export default config;

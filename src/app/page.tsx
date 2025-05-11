@@ -1,6 +1,6 @@
 import { SignedOut, SignedIn } from "@clerk/nextjs";
 import Link from "next/link";
-import { db } from "~/server/db";
+import { getMyImages } from "~/server/queries";
 
 // This is used to force the page to be dynamic and not static
 // This is useful for pages that need to be updated frequently
@@ -8,10 +8,9 @@ import { db } from "~/server/db";
 export const dynamic = "force-dynamic";
 
 const Images = async () => {
-  const images = await db.query.images.findMany({
-    orderBy: (model, { desc }) => desc(model.id),
-    // where: (img, { eq }) => eq(img.userId, user.id), ),
-  });
+
+  const images = await getMyImages();
+  
   console.log("images", images);
   return (
     <div className="flex flex-wrap gap-4 content-center">

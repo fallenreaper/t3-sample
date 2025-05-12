@@ -17,18 +17,17 @@ const Images = async () => {
     <div className="flex flex-wrap gap-4 justify-center">
       {images.map((img) => (
         <div key={img.id} className="w-48 h-48">
-          <Image 
-            src={img.url} 
-            alt="image" 
-            width={480}
-            height={480}
-            style={{objectFit: "contain"}} />
           <div className="text-center">
             <Link
-              href={`/images/${img.id}`}
-              className="text-blue-500 hover:underline"
+              href={`/img/${img.id}`}
+              shallow={true}
             >
-              {img.name}
+            <Image 
+              src={img.url} 
+              alt="image" 
+              width={480}
+              height={480}
+              style={{objectFit: "contain"}} />
             </Link>
           </div>
         </div>

@@ -11,9 +11,11 @@
 - [x] Add image upload
 - [x] Taint (server only)
 - [x] User Next/Image component
-- [ ] Error Management ( w/ Sentry )
+- [x] Error Management ( w/ Sentry )
 - [ ] Routing / Image Page
 - [ ] Delete Button
 - [ ] Analytics (posthog)
 - [ ] Rate Limiting (upstash)
 
+# Sentry
+Sentry.io is used to manage errors in the Application.  You can go there, run its respective set up and youw ill get it all setup from within our app.

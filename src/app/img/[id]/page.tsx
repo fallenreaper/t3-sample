@@ -1,7 +1,4 @@
 
-
-// import {Modal} from "./modal";
-
 import { FullScreenImagePage } from "~/app/_components/full-screen-image-page";
 
 export default function PhotoModal({params}: {params: {id: string}}) {
@@ -10,7 +7,6 @@ export default function PhotoModal({params}: {params: {id: string}}) {
   if (Number.isNaN(photoId)) {
     throw new Error("Invalid photo ID");
   }
-  // Gets the ID from params and assigns it to photoId
   return (
     <FullScreenImagePage id={photoId} />
   );

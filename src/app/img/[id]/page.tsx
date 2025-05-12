@@ -2,13 +2,17 @@
 
 // import {Modal} from "./modal";
 
-export default async function PhotoModal({params}: {params: {id: string}}) {
-  // The params object is gong to be a promise
-  const {id: photoId} = await params;
+import { FullScreenImagePage } from "~/app/_components/full-screen-image-page";
+
+export default function PhotoModal({params}: {params: {id: string}}) {
+
+  const photoId = Number(params.id);
+  if (Number.isNaN(photoId)) {
+    throw new Error("Invalid photo ID");
+  }
   // Gets the ID from params and assigns it to photoId
   return (
-    // <Modal>{photoIdId}</Modal>
-    <>{photoId}</>
+    <FullScreenImagePage id={photoId} />
   );
 
 }

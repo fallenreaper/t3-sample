@@ -9,25 +9,22 @@ import { getMyImages } from "~/server/queries";
 export const dynamic = "force-dynamic";
 
 const Images = async () => {
-
   const images = await getMyImages();
-  
+
   console.log("images", images);
   return (
-    <div className="flex flex-wrap gap-4 justify-center p-5">
+    <div className="flex flex-wrap justify-center gap-4 p-5">
       {images.map((img) => (
-        <div key={img.id} className="w-48 h-48">
+        <div key={img.id} className="h-48 w-48">
           <div className="text-center">
-            <Link
-              href={`/img/${img.id}`}
-              shallow={true}
-            >
-            <Image 
-              src={img.url} 
-              alt="image" 
-              width={480}
-              height={480}
-              style={{objectFit: "contain"}} />
+            <Link href={`/img/${img.id}`} shallow={true}>
+              <Image
+                src={img.url}
+                alt="image"
+                width={480}
+                height={480}
+                style={{ objectFit: "contain" }}
+              />
             </Link>
           </div>
         </div>

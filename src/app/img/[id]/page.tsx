@@ -8,7 +8,9 @@ export default function PhotoModal({params}: {params: {id: string}}) {
     throw new Error("Invalid photo ID");
   }
   return (
-    <FullScreenImagePage id={photoId} />
+    <div className="h-full">
+      <FullScreenImagePage id={photoId} />
+    </div>
   );
 
 }

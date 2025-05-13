@@ -33,7 +33,7 @@ export default function RootLayout({
           <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
           <div className="grid h-screen grid-rows-[auto,1fr]">
             <TopNav />
-            <main className="overflow-y-scroll">{children}</main>
+            <main className="overflow-y-scroll h-full">{children}</main>
           </div>
           {modal}
           <div id="modal-root" />

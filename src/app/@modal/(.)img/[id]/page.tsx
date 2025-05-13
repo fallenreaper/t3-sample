@@ -10,9 +10,9 @@ import { Modal } from "~/app/_components/modal";
 //   However, to make sure it routes correctly, it will need a dedicated route, which is located in:
 //   src/app/img
 
-export default function PhotoModal({ params }: { params: { id: string } }) {
+export default async  function PhotoModal({ params }: { params: { id: string } }) {
   // The params object is gong to be a promise
-  const { id } = params;
+  const { id } = await params;
   const photoId = Number(id);
   if (Number.isNaN(photoId)) {
     throw new Error("Invalid photo ID");

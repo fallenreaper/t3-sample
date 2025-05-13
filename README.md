@@ -35,3 +35,9 @@ This is a document repo, similar to IMGUR, except it has privacy attached, so yo
 A perk of upload thing, beyond the use for demos is the ability for a user to upload the data with your respective tokens to their site directly, allowing you to bypass the "over-the-wire" costs that some companies like Vercel may charge as file content sizes can count against people for throughput etc.
 
 [uploadthing.](https://docs.uploadthing.com/)
+
+# NextJs Taint
+Currently experimental, you can look in the `react` module and see some of their experimental functions.   You can use some of them to wrap data objects and tell them what they would never want to release to the user.   Examples are things like PII, addresses, or anything similar to that.
+
+While I didnt implement it at the moment, it is great to hide anything from leaking to the server.
+

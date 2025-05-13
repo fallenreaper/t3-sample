@@ -14,7 +14,7 @@ const Images = async () => {
   
   console.log("images", images);
   return (
-    <div className="flex flex-wrap gap-4 justify-center">
+    <div className="flex flex-wrap gap-4 justify-center p-5">
       {images.map((img) => (
         <div key={img.id} className="w-48 h-48">
           <div className="text-center">

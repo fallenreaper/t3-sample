@@ -37,7 +37,7 @@ export default async function HomePage() {
   return (
     <main>
       <SignedOut>
-        <div className="h-full w-full text-2xl">Sign in to view Photos!</div>
+        <div className="h-full w-full text-2xl text-center">Sign in to view Photos!</div>
       </SignedOut>
       <SignedIn>
         <Images />

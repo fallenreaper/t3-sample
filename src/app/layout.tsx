@@ -10,7 +10,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import type React from "react";
-import { Toaster } from "~/app/_components/sonner";
+import { Toaster } from "~/app/_components/shadcn/sonner";
 import { PostHogProvider } from "./_analytics/providers";
 
 export const metadata: Metadata = {

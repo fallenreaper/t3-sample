@@ -1,9 +1,18 @@
 import { clerkClient } from "@clerk/nextjs/server";
-import { getImageById } from "~/server/queries";
+import { Button } from "~/app/_components/shadcn/button";
+import { deleteImageById, getImageById } from "~/server/queries";
 
 export async function FullScreenImagePage(props: { id: number }) {
-  const image = await getImageById(props.id);
-
+  let image;
+  try{
+    image = await getImageById(props.id);
+  }catch(e){
+    return (
+      <div className="flex h-full w-full items-center justify-center">
+        <h1 className="text-2xl">Image not found</h1>
+      </div>
+    )
+  }
   const uploadedBy = await (await clerkClient()).users.getUser(image.userId);
 
   return (
@@ -27,6 +36,16 @@ export async function FullScreenImagePage(props: { id: number }) {
           <span>Uploaded at:</span>
           <span>{new Date(image.createdAt).toLocaleDateString()}</span>
         </div>
+        <div className="flex flex-col p-2">
+          <form action={ async () => {
+            "use server";
+
+            await deleteImageById(props.id);
+          }}>
+            <Button type="submit" variant="destructive">Button</Button>
+          </form>
+        </div>
+
       </div>
     </div>
   );

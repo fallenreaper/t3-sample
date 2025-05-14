@@ -19,6 +19,7 @@
 - [x] Analytics (posthog)
 - [ ] When Deleting from the Modal, it will not close it on completion.
 - [ ] Rate Limiting (upstash)
+- [ ] Create a new Route in uploadthing/core in order to delete a file.
 
 # Clerk
 User Management. Starts to cost after 10k unique monthly users.  I think it is like $0.01 per user after 10k.   Clerk is useful if you arent creating something for a large userbase, however if we want to grow, we will need to pay.   In order to better understand the goals and use of this, we would need to make sure whatever we are doing has the income to manage it.  An Ad Revenue or subscription model helps in that.

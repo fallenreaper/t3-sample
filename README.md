@@ -15,8 +15,9 @@
 - [x] Routing / Image Page
 - [x] Upload Buttons complete
 - [x] ShadUi set up toasts.
-- [ ] Delete Button
-- [ ] Analytics (posthog)
+- [x] Delete Button
+- [x] Analytics (posthog)
+- [ ] When Deleting from the Modal, it will not close it on completion.
 - [ ] Rate Limiting (upstash)
 
 # Clerk
@@ -50,5 +51,7 @@ It has value to look into some of the other components, but it gives you the fre
 
 # PostHog
 User Analytics to understand user patterns.  If everyone is doing the same pattern we can either improve that pattern or see how we can bring something they like forward to other areas.  Its open source, so thats always good.
+
+This has server and client side analytics to track actions and what events are being done on the server.
 
 [PostHog Website](https://posthod.com)

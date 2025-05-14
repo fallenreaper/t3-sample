@@ -11,6 +11,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import type React from "react";
 import { Toaster } from "~/app/_components/sonner";
+import { PostHogProvider } from "./_analytics/providers";
 
 export const metadata: Metadata = {
   title: "Just a Sample Gallery",
@@ -29,18 +30,24 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode; modal: React.ReactNode }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={`font-sans ${geist.variable} dark`}>
-          <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
-          <div className="grid h-screen grid-rows-[auto,1fr]">
-            <TopNav />
-            <main className="overflow-y-scroll h-full">{children}</main>
-          </div>
-          {modal}
-          <div id="modal-root" />
-          <Toaster />
-        </body>
-      </html>
+      <PostHogProvider>
+        {/* 
+        I want PostHod to know about Clerk information for user tracking.
+        Due to this, it needs to be inside clerk but outside the HTML
+        */}
+        <html lang="en">
+          <body className={`font-sans ${geist.variable} dark`}>
+            <NextSSRPlugin routerConfig={extractRouterConfig(ourFileRouter)} />
+            <div className="grid h-screen grid-rows-[auto,1fr]">
+              <TopNav />
+              <main className="h-full overflow-y-scroll">{children}</main>
+            </div>
+            {modal}
+            <div id="modal-root" />
+            <Toaster />
+          </body>
+        </html>
+      </PostHogProvider>
     </ClerkProvider>
   );
 }

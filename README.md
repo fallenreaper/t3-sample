@@ -14,7 +14,7 @@
 - [x] Error Management ( w/ Sentry )
 - [x] Routing / Image Page
 - [x] Upload Buttons complete
-- [ ] ShadUi set up toasts.
+- [x] ShadUi set up toasts.
 - [ ] Delete Button
 - [ ] Analytics (posthog)
 - [ ] Rate Limiting (upstash)
@@ -43,3 +43,12 @@ Currently experimental, you can look in the `react` module and see some of their
 
 While I didnt implement it at the moment, it is great to hide anything from leaking to the server.
 
+# Shadcn UI
+This is a UI Component library that is really nice.  You can use a bunch of components they havem but I am just using this Sonnar object which is a toast.  It looks really nice.
+
+It has value to look into some of the other components, but it gives you the freedom to adjust components how you want with their source code.  So that is nice!  I never really heard about them, but im not in the UI space as often.
+
+# PostHog
+User Analytics to understand user patterns.  If everyone is doing the same pattern we can either improve that pattern or see how we can bring something they like forward to other areas.  Its open source, so thats always good.
+
+[PostHog Website](https://posthod.com)

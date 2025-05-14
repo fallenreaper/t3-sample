@@ -13,6 +13,8 @@
 - [x] User Next/Image component
 - [x] Error Management ( w/ Sentry )
 - [x] Routing / Image Page
+- [x] Upload Buttons complete
+- [ ] ShadUi set up toasts.
 - [ ] Delete Button
 - [ ] Analytics (posthog)
 - [ ] Rate Limiting (upstash)

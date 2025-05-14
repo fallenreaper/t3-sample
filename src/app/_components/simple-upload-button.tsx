@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { useUploadThing } from "~/utils/uploadthing";
 
 // inferred input off useUploadThing
@@ -38,8 +39,17 @@ const UploadIcon = () => (
 export function SimpleUploadButton() {
   const router = useRouter();
   const { inputProps } = useUploadThingInputProps("imageUploader", {
+    onUploadBegin: () => {
+      toast("Uploading Images...", {
+        description: "Please wait while we upload your images.",
+        duration: 15*1000,
+        id: "upload-begin"
+      });
+    },
     onClientUploadComplete: (res) => {
+      toast.dismiss("upload-begin");
       router.refresh();
+      toast.success("Upload complete!")
     },
   });
   return (

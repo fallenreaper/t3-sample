@@ -1,4 +1,19 @@
-# Sample Test
+# Summary
+In the process of understanding a bunch of tools over the years, I wanted to put a bunch of the knowledge together with various utilities and set up a means to test myself a bit more.  First off, sure making an app has some use, but it is more than just a simple gallery app.  It covers much of the following:
+
+## Tools Incorporated
+- Clerk User Management
+- Vercel Hosting
+- Vercel Postgres hosting with Neon
+- Sentry for Error Management
+- ShadUI as a new UI Component Library.
+- Posthog for user Analytics
+- Upstash for Rate limiting
+- NextJs for some additional design concepts.
+- - Parallel Routings so depending on how the page state is, it will have 2 looks. Useful for modals and direct links.
+- - Use Client
+- - "force-dynamic"
+- - ...and much more.
 
 ## TODO
 
@@ -12,14 +27,14 @@
 - [x] Taint (server only)
 - [x] User Next/Image component
 - [x] Error Management ( w/ Sentry )
-- [x] Routing / Image Page
+- [x] Parallel Routing / Image Page
 - [x] Upload Buttons complete
 - [x] ShadUi set up toasts.
 - [x] Delete Button
 - [x] Analytics (posthog)
 - [ ] When Deleting from the Modal, it will not close it on completion.
-- [ ] Rate Limiting (upstash)
-- [ ] Create a new Route in uploadthing/core in order to delete a file.
+- [x] Rate Limiting (upstash)
+- [ ] Create a new Route in uploadthing/core in order to delete a file from uploadThing server.
 
 # Clerk
 User Management. Starts to cost after 10k unique monthly users.  I think it is like $0.01 per user after 10k.   Clerk is useful if you arent creating something for a large userbase, however if we want to grow, we will need to pay.   In order to better understand the goals and use of this, we would need to make sure whatever we are doing has the income to manage it.  An Ad Revenue or subscription model helps in that.
@@ -56,3 +71,15 @@ User Analytics to understand user patterns.  If everyone is doing the same patte
 This has server and client side analytics to track actions and what events are being done on the server.
 
 [PostHog Website](https://posthod.com)
+
+# Upstash
+Upstash is a rate limiting tool. When you create and set it up like in the previous commit, you can add it in things like the middleware of your upload to verify you can do what you want it to di in the frequency you like.
+
+You can test this by pushing the extremes of like 2 uploads in 200s which will show rate limiting getting hit easily. This proves it works by determining the success of it.
+
+Under the hood, it runs a redis instance which essentially tracks the uniqueness that you are measuring against at the throughput you are asking.   It will then track that information for you and return errors if it hits the limit on the specific requrest.
+
+-------
+
+# My Thanks
+I just wanted to give a shoutout to Theo who assisted and kicked around ideas.

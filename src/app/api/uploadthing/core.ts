@@ -1,6 +1,6 @@
 import { createUploadthing, type FileRouter } from "uploadthing/server";
 import { UploadThingError } from "uploadthing/server";
-import { auth } from "@clerk/nextjs/server";
+import { auth, clerkClient } from "@clerk/nextjs/server";
 import { db } from "~/server/db";
 import { images } from "~/server/db/schema";
 import { ratelimit } from "~/server/ratelimit";
@@ -29,6 +29,17 @@ export const ourFileRouter = {
 
       // If you throw, the user will not be able to upload
       if (!user.userId) throw new UploadThingError("Unauthorized");
+
+      // To get full user data, you need to establish the clerk client, then await a getUser call.
+      const client = await clerkClient();
+      const fullUserData = await client.users.getUser(user.userId);
+      // On Clerk, you can set metadata for users. Given that, I created a quick private metadata object
+      // { canUpload: true}
+      // So my account can upload and anyone I want to give permissions to, just needs to have this prop set.
+      // You can also write code that will manage user Metadata as well in an Admin Page of sorts.
+      if( !fullUserData?.privateMetadata?.["canUpload"]){
+        throw new UploadThingError("User does not have upload permissions");
+      }
 
       // If the rate limit of the user is exceeded, throw an error
       const { success } = await ratelimit.limit(user.userId)

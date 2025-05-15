@@ -3,6 +3,7 @@ import { UploadThingError } from "uploadthing/server";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "~/server/db";
 import { images } from "~/server/db/schema";
+import { ratelimit } from "~/server/ratelimit";
 
 const f = createUploadthing();
 
@@ -29,6 +30,12 @@ export const ourFileRouter = {
       // If you throw, the user will not be able to upload
       if (!user.userId) throw new UploadThingError("Unauthorized");
 
+      // If the rate limit of the user is exceeded, throw an error
+      const { success } = await ratelimit.limit(user.userId)
+      if (!success) {
+        throw new UploadThingError("Rate limit exceeded");
+      }
+
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
       return { userId: user.userId };
     })
@@ -46,7 +53,7 @@ export const ourFileRouter = {
 
       // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
       return { uploadedBy: metadata.userId };
-    }),
+    })
 } satisfies FileRouter;
 
 export type OurFileRouter = typeof ourFileRouter;

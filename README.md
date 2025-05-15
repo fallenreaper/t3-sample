@@ -27,7 +27,7 @@ https://clerk.com/
 
 # Sentry
 Sentry.io is used to manage errors in the Application.  You can go there, run its respective set up and youw ill get it all setup from within our app.
-https://sentri.io
+[Sentry Website](https://sentry.io)
 
 # Parallel Routes
 Used to overlay content and update the route, BUT if you go to that URL listed, it will route to a different page.  This allows the user to update in real time what they are looking at with modals ( or some other means ) and if they share the link, it will go back to a custom page just for that item.
